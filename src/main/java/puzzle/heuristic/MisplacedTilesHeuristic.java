@@ -8,8 +8,14 @@ public final class MisplacedTilesHeuristic implements Heuristic {
 
     @Override
     public int estimate(Board b) {
-        // TODO: scan tiles, count how many non-zero tiles differ from the goal layout.
-        throw new UnsupportedOperationException("TODO");
+        int[] tiles = b.tiles();
+        int count = 0;
+        for (int i = 0; i < 8; i++) {
+            if (tiles[i] != 0 && tiles[i] != i + 1) count++;
+        }
+        // Position 8 must hold 0 in goal; any non-blank tile there is misplaced.
+        if (tiles[8] != 0) count++;
+        return count;
     }
 
     @Override

@@ -18,7 +18,15 @@ public final class ManhattanHeuristic implements Heuristic {
 
     // Reusable building block for OverestimateHeuristic and ManhattanLinearConflictHeuristic.
     public static int manhattanSum(Board b) {
-        // TODO: for each tile (1..8), compute |row - goalRow| + |col - goalCol| and sum.
-        throw new UnsupportedOperationException("TODO");
+        int[] tiles = b.tiles();
+        int sum = 0;
+        for (int i = 0; i < 9; i++) {
+            int tile = tiles[i];
+            if (tile == 0) continue;
+            int goalRow = (tile - 1) / 3;
+            int goalCol = (tile - 1) % 3;
+            sum += Math.abs(i / 3 - goalRow) + Math.abs(i % 3 - goalCol);
+        }
+        return sum;
     }
 }

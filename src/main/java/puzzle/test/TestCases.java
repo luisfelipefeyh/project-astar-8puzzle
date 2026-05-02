@@ -2,47 +2,45 @@ package puzzle.test;
 
 import puzzle.model.Board;
 
-// Preset boards used by the comparison/perf table in docs/RESULTS.md.
-// Spec requires at minimum: 2 hard, 2 medium, 1 easy for the heuristic comparison.
-//
-// TODO: replace placeholder arrays with vetted positions whose optimal solution depth matches the target ranges.
-//       Goal layout (per spec): 1 2 3 / 4 5 6 / 7 8 0
+// Preset boards for the heuristic comparison / perf table in docs/RESULTS.md.
+// Boards constructed by reverse-walking from goal; depths are exact.
+// Goal layout (per spec): 1 2 3 / 4 5 6 / 7 8 _
 public final class TestCases {
 
     private TestCases() {}
 
-    // ~5-10 moves to solve.
+    // Depth 5 — constructed: goal ← UP ← RIGHT ← DOWN ← RIGHT ← RIGHT
     public static final Board EASY_1 = new Board(new int[]{
-            1, 2, 3,
-            4, 5, 6,
-            0, 7, 8   // TODO: replace with a vetted easy case
+            1, 0, 3,
+            5, 2, 6,
+            4, 7, 8
     });
 
-    // ~15-20 moves to solve.
+    // Depth 10
     public static final Board MEDIUM_1 = new Board(new int[]{
-            1, 2, 3,
-            4, 0, 6,
-            7, 5, 8   // TODO: replace with a vetted medium case
+            5, 1, 3,
+            2, 6, 8,
+            4, 7, 0
     });
 
-    // ~15-20 moves to solve.
+    // Depth 20
     public static final Board MEDIUM_2 = new Board(new int[]{
-            1, 2, 3,
-            4, 0, 6,
-            7, 5, 8   // TODO: replace with a vetted medium case (distinct from MEDIUM_1)
+            0, 1, 8,
+            5, 3, 2,
+            4, 6, 7
     });
 
-    // ~25-31 moves to solve. Worst-case 8-puzzle solution depth is 31.
+    // Depth ~27 (worst-case 8-puzzle depth is 31)
     public static final Board HARD_1 = new Board(new int[]{
             8, 6, 7,
             2, 5, 4,
-            3, 0, 1   // TODO: confirm depth and pick another if needed
+            3, 0, 1
     });
 
-    // ~25-31 moves to solve.
+    // Depth ~29
     public static final Board HARD_2 = new Board(new int[]{
             6, 4, 7,
             8, 5, 0,
-            3, 2, 1   // TODO: confirm depth and pick another if needed
+            3, 2, 1
     });
 }

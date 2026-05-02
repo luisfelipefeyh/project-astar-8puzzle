@@ -12,12 +12,9 @@ public final class ManhattanLinearConflictHeuristic implements Heuristic {
 
     @Override
     public int estimate(Board b) {
-        // TODO:
-        //   int h = ManhattanHeuristic.manhattanSum(b);
-        //   h += 2 * countRowConflicts(b);
-        //   h += 2 * countColConflicts(b);
-        //   return h;
-        throw new UnsupportedOperationException("TODO");
+        return ManhattanHeuristic.manhattanSum(b)
+             + 2 * countRowConflicts(b)
+             + 2 * countColConflicts(b);
     }
 
     @Override
@@ -25,13 +22,39 @@ public final class ManhattanLinearConflictHeuristic implements Heuristic {
         return "ManhattanLinearConflict";
     }
 
-    @SuppressWarnings("unused")
+    // Two tiles conflict in a row when both have their goal in that row but are currently inverted.
     private static int countRowConflicts(Board b) {
-        throw new UnsupportedOperationException("TODO");
+        int[] tiles = b.tiles();
+        int conflicts = 0;
+        for (int row = 0; row < 3; row++) {
+            for (int col1 = 0; col1 < 3; col1++) {
+                int ti = tiles[row * 3 + col1];
+                if (ti == 0 || (ti - 1) / 3 != row) continue;
+                for (int col2 = col1 + 1; col2 < 3; col2++) {
+                    int tj = tiles[row * 3 + col2];
+                    if (tj == 0 || (tj - 1) / 3 != row) continue;
+                    if ((ti - 1) % 3 > (tj - 1) % 3) conflicts++;
+                }
+            }
+        }
+        return conflicts;
     }
 
-    @SuppressWarnings("unused")
+    // Two tiles conflict in a column when both have their goal in that column but are currently inverted.
     private static int countColConflicts(Board b) {
-        throw new UnsupportedOperationException("TODO");
+        int[] tiles = b.tiles();
+        int conflicts = 0;
+        for (int col = 0; col < 3; col++) {
+            for (int row1 = 0; row1 < 3; row1++) {
+                int ti = tiles[row1 * 3 + col];
+                if (ti == 0 || (ti - 1) % 3 != col) continue;
+                for (int row2 = row1 + 1; row2 < 3; row2++) {
+                    int tj = tiles[row2 * 3 + col];
+                    if (tj == 0 || (tj - 1) % 3 != col) continue;
+                    if ((ti - 1) / 3 > (tj - 1) / 3) conflicts++;
+                }
+            }
+        }
+        return conflicts;
     }
 }
