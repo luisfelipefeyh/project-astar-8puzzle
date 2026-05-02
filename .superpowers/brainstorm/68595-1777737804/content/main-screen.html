@@ -1,0 +1,142 @@
+<h2>Tela Principal — Resolver e Animar</h2>
+<p class="subtitle">Layout da tela após escolher o tabuleiro e clicar Resolver</p>
+
+<div style="max-width:900px;margin:0 auto;background:#0f172a;border-radius:12px;padding:20px;font-family:system-ui,sans-serif">
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+
+    <!-- LEFT: Board + controls -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+
+      <!-- Board -->
+      <div style="background:#1e293b;border-radius:10px;padding:20px;display:flex;flex-direction:column;align-items:center;gap:12px">
+        <div style="color:#94a3b8;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Tabuleiro</div>
+        <div style="display:grid;grid-template-columns:repeat(3,80px);grid-template-rows:repeat(3,80px);gap:6px">
+          <div style="background:#1e3a8a;color:#93c5fd;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;border-radius:10px;box-shadow:0 4px 0 #1e40af">1</div>
+          <div style="background:#1e3a8a;color:#93c5fd;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;border-radius:10px;box-shadow:0 4px 0 #1e40af">2</div>
+          <div style="background:#1e3a8a;color:#93c5fd;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;border-radius:10px;box-shadow:0 4px 0 #1e40af">3</div>
+          <div style="background:#f59e0b;color:#fff;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;border-radius:10px;box-shadow:0 4px 0 #b45309;outline:3px solid #fbbf24">5</div>
+          <div style="background:#1e3a8a;color:#93c5fd;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;border-radius:10px;box-shadow:0 4px 0 #1e40af">2</div>
+          <div style="background:#1e3a8a;color:#93c5fd;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;border-radius:10px;box-shadow:0 4px 0 #1e40af">6</div>
+          <div style="background:#1e3a8a;color:#93c5fd;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;border-radius:10px;box-shadow:0 4px 0 #1e40af">4</div>
+          <div style="background:#1e3a8a;color:#93c5fd;display:flex;align-items:center;justify-content:center;font-size:32px;font-weight:800;border-radius:10px;box-shadow:0 4px 0 #1e40af">7</div>
+          <div style="background:#334155;border:3px dashed #475569;display:flex;align-items:center;justify-content:center;border-radius:10px"></div>
+        </div>
+
+        <!-- Step progress -->
+        <div style="width:100%;display:flex;flex-direction:column;gap:6px">
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:#64748b">
+            <span>Passo 3 de 10</span>
+            <span>g=3 · h=4 · <strong style="color:#60a5fa">f=7</strong></span>
+          </div>
+          <div style="background:#0f172a;border-radius:4px;height:6px;overflow:hidden">
+            <div style="width:30%;background:linear-gradient(90deg,#3b82f6,#60a5fa);height:6px;border-radius:4px"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Playback controls -->
+      <div style="background:#1e293b;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:center;gap:8px">
+          <button style="background:#334155;color:#94a3b8;border:none;border-radius:8px;width:40px;height:40px;font-size:16px;cursor:pointer">⏮</button>
+          <button style="background:#334155;color:#94a3b8;border:none;border-radius:8px;width:40px;height:40px;font-size:16px;cursor:pointer">⏪</button>
+          <button style="background:#3b82f6;color:#fff;border:none;border-radius:8px;width:48px;height:40px;font-size:18px;cursor:pointer">⏸</button>
+          <button style="background:#334155;color:#94a3b8;border:none;border-radius:8px;width:40px;height:40px;font-size:16px;cursor:pointer">⏩</button>
+          <button style="background:#334155;color:#94a3b8;border:none;border-radius:8px;width:40px;height:40px;font-size:16px;cursor:pointer">⏭</button>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px">
+          <span style="color:#64748b;font-size:11px;white-space:nowrap">Velocidade</span>
+          <div style="flex:1;background:#0f172a;border-radius:4px;height:4px;position:relative">
+            <div style="width:50%;background:#3b82f6;height:4px;border-radius:4px"></div>
+            <div style="position:absolute;top:-6px;left:50%;transform:translateX(-50%);width:16px;height:16px;background:#3b82f6;border-radius:50%;border:2px solid #1e293b"></div>
+          </div>
+          <span style="color:#60a5fa;font-size:11px;white-space:nowrap">1×</span>
+        </div>
+      </div>
+
+      <!-- Back button -->
+      <button style="background:#1e293b;color:#64748b;border:1px solid #334155;border-radius:8px;padding:8px;font-size:13px;cursor:pointer">← Novo tabuleiro</button>
+    </div>
+
+    <!-- RIGHT: Algorithm selector + metrics -->
+    <div style="display:flex;flex-direction:column;gap:16px">
+
+      <!-- Algorithm selector -->
+      <div style="background:#1e293b;border-radius:10px;padding:16px">
+        <div style="color:#94a3b8;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Algoritmo</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+          <button style="background:#334155;color:#94a3b8;border:none;border-radius:8px;padding:8px;font-size:12px;cursor:pointer;text-align:left;line-height:1.4"><strong style="display:block">UCS</strong><span style="color:#475569;font-size:10px">Custo Uniforme</span></button>
+          <button style="background:#334155;color:#94a3b8;border:none;border-radius:8px;padding:8px;font-size:12px;cursor:pointer;text-align:left;line-height:1.4"><strong style="display:block">3× Manhattan</strong><span style="color:#475569;font-size:10px">Não admissível</span></button>
+          <button style="background:#334155;color:#94a3b8;border:none;border-radius:8px;padding:8px;font-size:12px;cursor:pointer;text-align:left;line-height:1.4"><strong style="display:block">Misplaced</strong><span style="color:#475569;font-size:10px">Admissível simples</span></button>
+          <button style="background:#1d4ed8;color:#fff;border:2px solid #3b82f6;border-radius:8px;padding:8px;font-size:12px;cursor:pointer;text-align:left;line-height:1.4"><strong style="display:block">Manhattan LC ✓</strong><span style="color:#93c5fd;font-size:10px">Mais precisa</span></button>
+        </div>
+      </div>
+
+      <!-- Live metrics -->
+      <div style="background:#1e293b;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:10px">
+        <div style="color:#94a3b8;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em">Métricas em tempo real</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div style="background:#0f172a;border-radius:8px;padding:10px">
+            <div style="color:#64748b;font-size:10px;margin-bottom:2px">Nós visitados</div>
+            <div style="color:#e2e8f0;font-size:22px;font-weight:700">11</div>
+          </div>
+          <div style="background:#0f172a;border-radius:8px;padding:10px">
+            <div style="color:#64748b;font-size:10px;margin-bottom:2px">Tamanho do caminho</div>
+            <div style="color:#e2e8f0;font-size:22px;font-weight:700">10</div>
+          </div>
+          <div style="background:#0f172a;border-radius:8px;padding:10px">
+            <div style="color:#64748b;font-size:10px;margin-bottom:2px">Fronteira máx.</div>
+            <div style="color:#e2e8f0;font-size:22px;font-weight:700">11</div>
+          </div>
+          <div style="background:#0f172a;border-radius:8px;padding:10px">
+            <div style="color:#64748b;font-size:10px;margin-bottom:2px">Tempo</div>
+            <div style="color:#e2e8f0;font-size:22px;font-weight:700">5ms</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison table -->
+      <div style="background:#1e293b;border-radius:10px;padding:16px">
+        <div style="color:#94a3b8;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:10px">Comparar todos</div>
+        <table style="width:100%;border-collapse:collapse;font-size:11px">
+          <thead>
+            <tr style="color:#475569">
+              <th style="text-align:left;padding:4px 0">Algoritmo</th>
+              <th style="text-align:right;padding:4px">Nós</th>
+              <th style="text-align:right;padding:4px">Path</th>
+              <th style="text-align:right;padding:4px">Tempo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="color:#94a3b8;border-top:1px solid #1e293b">
+              <td style="padding:5px 0">UCS</td>
+              <td style="text-align:right;color:#ef4444;padding:5px">543</td>
+              <td style="text-align:right;padding:5px">10</td>
+              <td style="text-align:right;padding:5px">9ms</td>
+            </tr>
+            <tr style="border-top:1px solid #0f172a;color:#94a3b8">
+              <td style="padding:5px 0">3×Manhattan</td>
+              <td style="text-align:right;color:#f59e0b;padding:5px">11</td>
+              <td style="text-align:right;padding:5px">10</td>
+              <td style="text-align:right;padding:5px">5ms</td>
+            </tr>
+            <tr style="border-top:1px solid #0f172a;color:#94a3b8">
+              <td style="padding:5px 0">Misplaced</td>
+              <td style="text-align:right;color:#f59e0b;padding:5px">23</td>
+              <td style="text-align:right;padding:5px">10</td>
+              <td style="text-align:right;padding:5px">6ms</td>
+            </tr>
+            <tr style="border-top:1px solid #0f172a;background:#14532d20;color:#4ade80">
+              <td style="padding:5px 0;border-radius:4px">Manhattan LC ★</td>
+              <td style="text-align:right;padding:5px">11</td>
+              <td style="text-align:right;padding:5px">10</td>
+              <td style="text-align:right;padding:5px">5ms</td>
+            </tr>
+          </tbody>
+        </table>
+        <button style="margin-top:10px;width:100%;background:#1d4ed8;color:#fff;border:none;border-radius:8px;padding:8px;font-size:12px;cursor:pointer">▶ Rodar todos os 4 agora</button>
+      </div>
+
+    </div>
+  </div>
+</div>

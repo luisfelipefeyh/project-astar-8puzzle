@@ -1,0 +1,99 @@
+<h2>Como mostrar as decisões do algoritmo?</h2>
+<p class="subtitle">Três abordagens — cada uma com nível diferente de detalhe</p>
+
+<div class="cards">
+
+  <!-- Option A: Frontier panel -->
+  <div class="card" data-choice="frontier" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f172a;padding:14px;min-height:200px">
+      <div style="font-size:10px;color:#64748b;font-weight:600;text-transform:uppercase;margin-bottom:8px">Fronteira (open list) — ordenada por f</div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <!-- highlighted current -->
+        <div style="background:#1d4ed8;border-radius:6px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;border:1px solid #3b82f6">
+          <span style="font-family:monospace;font-size:11px;color:#fff">1 2 3 / 5 _ 6 / 4 7 8</span>
+          <div style="display:flex;gap:8px;font-size:10px">
+            <span style="color:#93c5fd">g=<strong>3</strong></span>
+            <span style="color:#fbbf24">h=<strong>4</strong></span>
+            <span style="color:#4ade80;background:#14532d;padding:1px 5px;border-radius:3px">f=<strong>7</strong> ←</span>
+          </div>
+        </div>
+        <div style="background:#1e293b;border-radius:6px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-family:monospace;font-size:11px;color:#94a3b8">1 2 3 / _ 5 6 / 4 7 8</span>
+          <div style="display:flex;gap:8px;font-size:10px;color:#64748b">
+            <span>g=3</span><span>h=5</span><span style="color:#94a3b8">f=8</span>
+          </div>
+        </div>
+        <div style="background:#1e293b;border-radius:6px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center">
+          <span style="font-family:monospace;font-size:11px;color:#94a3b8">1 2 3 / 5 6 _ / 4 7 8</span>
+          <div style="display:flex;gap:8px;font-size:10px;color:#64748b">
+            <span>g=3</span><span>h=5</span><span style="color:#94a3b8">f=8</span>
+          </div>
+        </div>
+        <div style="background:#1e293b;border-radius:6px;padding:6px 10px;display:flex;justify-content:space-between;align-items:center;opacity:.5">
+          <span style="font-family:monospace;font-size:11px;color:#64748b">1 _ 3 / 5 2 6 / 4 7 8</span>
+          <div style="display:flex;gap:8px;font-size:10px;color:#475569">
+            <span>g=3</span><span>h=6</span><span>f=9</span>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:8px;font-size:10px;color:#475569;text-align:center">+7 nós na fila...</div>
+    </div>
+    <div class="card-body">
+      <h3>A — Painel da Fronteira</h3>
+      <p>Lista os nós atualmente na priority queue ordenados por f. Destaca o nó que <em>será expandido agora</em>. Mostra g, h e f de cada candidato. <strong>Explica diretamente a heurística.</strong></p>
+    </div>
+  </div>
+
+  <!-- Option B: Step log -->
+  <div class="card" data-choice="log" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f172a;padding:14px;min-height:200px;font-family:monospace;font-size:11px">
+      <div style="font-size:10px;color:#64748b;font-weight:600;text-transform:uppercase;margin-bottom:8px;font-family:system-ui">Log de decisões</div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <div style="color:#475569"><span style="color:#334155">[1]</span> Inicio: g=0 h=5 f=5</div>
+        <div style="color:#475569"><span style="color:#334155">[2]</span> Expande melhor f=5 → gera 3 filhos</div>
+        <div style="color:#4ade80"><span style="color:#166534">[3]</span> ✓ Filho DOWN: g=1 h=4 <strong>f=5</strong> — melhor!</div>
+        <div style="color:#475569"><span style="color:#334155">[4]</span> Filho LEFT: g=1 h=5 f=6</div>
+        <div style="color:#ef4444"><span style="color:#7f1d1d">[5]</span> ✗ Filho UP: estado já visitado — pula</div>
+        <div style="color:#4ade80"><span style="color:#166534">[6]</span> ✓ Expande f=5 → DOWN → g=2 h=3 <strong>f=5</strong></div>
+        <div style="color:#4ade80"><span style="color:#166534">[7]</span> ✓ Expande f=5 → LEFT → g=3 h=2 <strong>f=5</strong></div>
+        <div style="color:#fbbf24"><span style="color:#92400e">[8]</span> ← Passo atual</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Log de Decisões</h3>
+      <p>Texto passo a passo mostrando cada expansão: qual nó foi escolhido, quais vizinhos foram gerados, quais foram descartados (visitados) e qual foi o melhor. <strong>Ideal para explicar o código ao vivo.</strong></p>
+    </div>
+  </div>
+
+  <!-- Option C: Both in drawer -->
+  <div class="card" data-choice="both" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f172a;padding:14px;min-height:200px;display:flex;flex-direction:column;gap:8px">
+      <div style="font-size:10px;color:#64748b;font-weight:600;text-transform:uppercase;font-family:system-ui">Gaveta expansível na parte inferior</div>
+      <!-- Collapsed state -->
+      <div style="background:#1e293b;border-radius:8px;padding:10px;display:flex;justify-content:space-between;align-items:center">
+        <span style="color:#94a3b8;font-size:12px;font-family:system-ui">🔍 Ver internals do algoritmo</span>
+        <span style="color:#3b82f6;font-size:16px">▲</span>
+      </div>
+      <!-- Expanded state preview -->
+      <div style="background:#1e293b;border-radius:8px;padding:10px;flex:1;display:flex;gap:10px">
+        <div style="flex:1;display:flex;flex-direction:column;gap:4px">
+          <div style="font-size:10px;color:#64748b;font-family:system-ui;margin-bottom:2px">Fronteira (5 nós)</div>
+          <div style="background:#1d4ed8;border-radius:4px;padding:4px 6px;font-family:monospace;font-size:10px;color:#93c5fd">f=7 ← expandindo</div>
+          <div style="background:#0f172a;border-radius:4px;padding:4px 6px;font-family:monospace;font-size:10px;color:#64748b">f=8</div>
+          <div style="background:#0f172a;border-radius:4px;padding:4px 6px;font-family:monospace;font-size:10px;color:#64748b">f=8</div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:4px">
+          <div style="font-size:10px;color:#64748b;font-family:system-ui;margin-bottom:2px">Visitados (3)</div>
+          <div style="background:#0f172a;border-radius:4px;padding:4px 6px;font-family:monospace;font-size:10px;color:#475569">1 2 3/4 5 6/7 8 _</div>
+          <div style="background:#0f172a;border-radius:4px;padding:4px 6px;font-family:monospace;font-size:10px;color:#475569">1 2 3/4 5 _/7 8 6</div>
+          <div style="background:#0f172a;border-radius:4px;padding:4px 6px;font-family:monospace;font-size:10px;color:#475569">1 2 3/4 _ 5/7 8 6</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Gaveta expansível (recomendado)</h3>
+      <p>Fica escondida por padrão — a tela principal não fica poluída. Clica em "Ver internals" e abre um painel mostrando <strong>fronteira + visitados lado a lado</strong>, sincronizado com cada passo da animação.</p>
+    </div>
+  </div>
+
+</div>
