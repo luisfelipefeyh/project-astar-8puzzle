@@ -1,18 +1,18 @@
 # project-astar-8puzzle
 
-An implementation of the A* search algorithm applied to the 8-puzzle game, in plain Java.
+An implementation of the A\* search algorithm applied to the 8-puzzle game, in plain Java.
 
 ## Course
 
 UFSC — Departamento de Informática e Estatística
 Curso de Sistemas de Informação — Disciplina de Sistemas Inteligentes
 Profa. Nathalia da Cruz Alves
-*Trabalho Prático 1 — Métodos de Busca*
+_Trabalho Prático 1 — Métodos de Busca_
 
 ## Team
 
 - Luis Felipe de Azambuja Feyh
-- TODO: partner name
+- TODO: João Pedro Paixão de Matos Gubert
 
 ## Spec summary
 
@@ -88,6 +88,6 @@ java -cp out puzzle.Main
 
 ## References
 
-- TODO: Russell & Norvig — *Artificial Intelligence: A Modern Approach* (A\* and 8-puzzle heuristics)
-- TODO: Luger — *Artificial Intelligence: Structures and Strategies for Complex Problem Solving*
+- TODO: Russell & Norvig — _Artificial Intelligence: A Modern Approach_ (A\* and 8-puzzle heuristics)
+- TODO: Luger — _Artificial Intelligence: Structures and Strategies for Complex Problem Solving_
 - TODO: any other source consulted (cite with URL/repo if applicable)

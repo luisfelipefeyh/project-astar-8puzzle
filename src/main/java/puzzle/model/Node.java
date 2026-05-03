@@ -1,5 +1,7 @@
 package puzzle.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 // Search-tree node. Holds the state, the parent, the move that produced it, and g/h.
@@ -29,13 +31,18 @@ public final class Node {
     public int g()                 { return g; }
     public int h()                 { return h; }
 
-    // f = g + h
     public int f() {
-        throw new UnsupportedOperationException("TODO");
+        return g + h;
     }
 
-    // Walks parent pointers from this node back to the root and returns the move sequence.
     public List<Move> reconstructPath() {
-        throw new UnsupportedOperationException("TODO");
+        List<Move> path = new ArrayList<>();
+        Node current = this;
+        while (current.moveFromParent != null) {
+            path.add(current.moveFromParent);
+            current = current.parent;
+        }
+        Collections.reverse(path);
+        return path;
     }
 }
